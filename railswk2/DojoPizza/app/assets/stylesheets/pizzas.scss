@@ -1,6 +1,26 @@
 // Place all the styles related to the Pizzas controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+input{
+    display: block;
+    margin: 2px;
+}
+input:nth-last-child(2){
+    
+    display: inline-block;
+}
+form a, input:nth-last-child(2){
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 1px 5px;
+    background-color: burlywood;
+    
+}
+
 td{
     border: 1px solid black;
+}
+
+.danger{
+    color:red;
 }

@@ -1,2 +1,11 @@
-<h1>Pizzas#edit</h1>
-<p>Find me in app/views/pizzas/edit.html.erb</p>
+<form action="/pizzas/<%= @pizza.id%>" method='post'>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <input type="text" name="pizza[name]" value='<%= @pizza.name %>'>
+    <input type="text" name="pizza[address]" value='<%= @pizza.address %>'>
+    <input type="text" name="pizza[city]" value='<%= @pizza.city %>'>
+    <input type="text" name="pizza[state]" value='<%= @pizza.state %>'>
+
+    <input type="submit" value="Update">
+    <a href='/pizzas/<%= @pizza.id %>'>Cancel</a >
+</form>
