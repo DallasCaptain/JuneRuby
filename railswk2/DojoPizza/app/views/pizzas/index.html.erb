@@ -1,0 +1,16 @@
+<h1>Welcome to Dojo Pizzas</h1>
+
+<table>
+    <th>Name</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>State</th>
+    <% @pizzas.each do |pizza|  %>
+    <tr>
+        <td><%= pizza.name %></td>
+        <td><%= pizza.address %></td>
+        <td><%= pizza.city %></td>
+        <td><%= pizza.state %></td>
+    </tr>
+    <% end %>
+</table>

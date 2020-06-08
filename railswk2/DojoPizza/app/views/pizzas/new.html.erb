@@ -1,0 +1,13 @@
+<h1>Please Create A New Franchise</h1>
+
+<form action="/pizzas" method='post'>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <input type="text" name="pizza[name]" placeholder='Name'>
+    <input type="text" name="pizza[address]" placeholder='Address'>
+    <input type="text" name="pizza[city]" placeholder='City'>
+    <input type="text" name="pizza[state]" placeholder='State'>
+
+    <input type="submit" value="Create">
+
+</form>
