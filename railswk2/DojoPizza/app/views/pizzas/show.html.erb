@@ -1,4 +1,16 @@
 <h1><%= @pizza.name %></h1>
 <h3><%= @pizza.address%></h3>
 <h3><%= @pizza.city%>, <%= @pizza.state%></h3>
+
+<ul>
+    <% @customers.each do |cus| %>
+        <li><%= cus.name %> : <%= cus.purchases %> | <%= link_to 'Show', pizza_customer_path(pizza_id: @pizza.id, id: cus.id) %></li>
+        
+    <% end %>
+</ul>
+
 <a href="/pizzas/<%= @pizza.id %>/edit">Edit</a>
+
+
+
+

@@ -1,5 +1,16 @@
 <h1>Welcome to Dojo Pizzas</h1>
+<img src="<%= asset_path 'kitty.jpg' %>" alt="an awesome kitty">
 
+<% if @errors %>
+    <% @errors.each do |error| %>
+        <h3 class = 'danger'><%= error %></h3>
+    <% end %>
+<% end %>
+<a href='/pizzas/new'>Add a Parlor</a>
+
+
+
+<% content_for :right do %>
 <table>
     <th>Name</th>
     <th>Address</th>
@@ -27,5 +38,9 @@
     </tr>
     <% end %>
 </table>
+<% end %>
 
-<a href='/pizzas/new'>Add a Parlor</a>
+
+
+<% content_for :left, "THIS IS ON THE LEFT" %>
+

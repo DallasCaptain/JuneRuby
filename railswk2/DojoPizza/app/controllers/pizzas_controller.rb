@@ -1,9 +1,24 @@
 class PizzasController < ApplicationController
+  layout 'pizzas_2Col', only: ['index']
+
+
+  def asdfasdf
+    @pizza = Pizza.new
+    render 'update'
+  end
+
   def index
+    @color = "green"
     @pizzas = Pizza.all
+    if flash[:errors]
+      @errors = flash[:errors]
+    end
   end
 
   def new
+    if flash[:errors]
+      @errors = flash[:errors]
+    end
   end
 
   def edit
@@ -12,11 +27,16 @@ class PizzasController < ApplicationController
 
   def show
     @pizza = Pizza.find(params[:id])
+    @customers = @pizza.customers
   end
 
   def create
 
-    Pizza.create(pizzaParams)
+    pizza = Pizza.create(pizzaParams)
+    if pizza.errors.any? 
+      flash[:errors] = pizza.errors.full_messages
+      redirect_to new_pizza_url and return
+    end
 
     redirect_to pizzas_url
   end
@@ -28,7 +48,7 @@ class PizzasController < ApplicationController
     pizza.city = pizzaParams[:city]
     pizza.state = pizzaParams[:state]
     pizza.save
-    redirect_to showPizza_url(id: params[:id])
+    redirect_to pizza_url(id: params[:id])
   end
 
   def destroy
@@ -41,4 +61,5 @@ class PizzasController < ApplicationController
     params.require(:pizza).permit(:name,:address,:city,:state)
   end
 
+  
 end

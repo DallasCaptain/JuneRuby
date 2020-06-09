@@ -1,2 +1,22 @@
-<h1>Pizzas#update</h1>
-<p>Find me in app/views/pizzas/update.html.erb</p>
+<%= form_for(@pizza) do |f| %>
+  
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_area :city %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_area :state %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DojoPizza</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render "shared/header" %>
+<%= yield %>
+<hr>
+<div class='container'>
+    <div class="column">
+        <%= yield :left %>
+    </div>
+    <div class="column">
+        <%= yield :right %>
+    </div>
+</div>
+    
+    
+<a href='/'>Home</a>
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 function SLNode(val){
     this.val = val
     this.next = null
+    this.child = null
 }
 
 function SLList(){
@@ -30,6 +31,29 @@ function SLList(){
         }
     
     }
+
+    this.flattenChildren = function(){
+        let stack = []
+        let runner = this.head
+        while(runner != null || stack.length){
+            if( runner.next == null && stack.length){
+                runner.next = stack.pop()
+            } 
+            if (runner.child){
+                stack.push(runner.next)
+                runner.next = runner.child
+            }
+            
+            
+            runner = runner.next
+        }
+
+
+
+    }
+
+
+
 }
 
 
@@ -37,13 +61,33 @@ let list = new SLList()
 let node1 = new SLNode(1)
 let node2 = new SLNode(2)
 let node3 = new SLNode(3)
+let node4 = new SLNode(4)
+let node5 = new SLNode(5)
+let node6 = new SLNode(6)
+
+let node7 = new SLNode(7)
+let node8 = new SLNode(8)
+let node9 = new SLNode(9)
 
 list.head = node1
 node1.next = node2
 node2.next = node3
+node4.next = node5
+node5.next = node6
+
+node7.next = node8
+node8.next = node9
+node6.child = node7
+
+node2.child = node4
+
+
+
+
 
 list.display()
 console.log('*********')
-list.reverse()
+list.flattenChildren()
+// list.reverse()
 list.display()
 

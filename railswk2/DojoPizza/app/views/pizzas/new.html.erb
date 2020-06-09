@@ -1,5 +1,9 @@
 <h1>Please Create A New Franchise</h1>
-
+<% if @errors %>
+    <% @errors.each do |error| %>
+        <h3 class = 'danger'><%= error %></h3>
+    <% end %>
+<% end %>
 <form action="/pizzas" method='post'>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
