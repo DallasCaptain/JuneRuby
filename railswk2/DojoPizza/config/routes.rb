@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   # delete 'pizzas/:id' => 'pizzas#destroy'
   
-  # get 'pizzas/:pizza_id/customers/:id' => 'customers#show'
+  # get 'pizzas/:pizza_id/customers/:id' => 'customers#show', as: 'pizza_customer' 
 
   resources :pizzas do
     resources :customers

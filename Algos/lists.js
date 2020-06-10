@@ -52,6 +52,50 @@ function SLList(){
 
     }
 
+    this.hasLoop = function(){
+        return true
+    }
+
+
+    this.breakLoop = function(){
+        let counter = 0
+        if(this.hasLoop()){
+            let runner = this.head.next
+            let follower = this.head
+            
+            
+            while(runner != follower){
+                runner = runner.next.next
+                follower = follower.next
+                counter += 2
+            }
+            //console.log('counter is:',counter)
+
+            runner = this.head.next
+            follower = this.head
+            found = false
+            while( !found){
+
+                for(let i = counter; i >= 0; i--){
+                    runner = runner.next
+                    if ( runner.next == follower){
+                        runner.next = null
+                        
+
+                        found = true
+                        break
+                    }
+                }
+                
+
+                follower = follower.next
+                runner = follower.next
+            }
+            
+            
+        }
+    }
+
 
 
 }
@@ -72,22 +116,21 @@ let node9 = new SLNode(9)
 list.head = node1
 node1.next = node2
 node2.next = node3
+node3.next = node4
 node4.next = node5
 node5.next = node6
-
-node7.next = node8
-node8.next = node9
-node6.child = node7
-
-node2.child = node4
+//LOOOPING
+node6.next = node3
 
 
 
 
 
+//list.display()
+list.breakLoop()
 list.display()
 console.log('*********')
-list.flattenChildren()
+// list.flattenChildren()
 // list.reverse()
-list.display()
+//list.display()
 
