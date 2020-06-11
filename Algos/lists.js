@@ -134,3 +134,29 @@ console.log('*********')
 // list.reverse()
 //list.display()
 
+
+
+function DlNode(val){
+    this.val = val
+    this.next = null
+    this.prev = null
+}
+
+function DlList(){
+    this.head = null
+    this.tail = null
+
+    this.push= function(){
+        
+    }
+
+    this.pop()
+
+    this.front()
+
+    this.back()
+
+    this.contains()
+
+    this.size()
+}
