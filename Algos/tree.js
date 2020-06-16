@@ -65,6 +65,51 @@ function bsTree(){
     }
 
 
+    this.size = function(){
+
+        let runner = this.head
+
+        return (1 + nsize(runner.left) + nsize(runner.right))
+
+
+        function nsize(node){
+            if(node == null){
+                return 0
+            }
+            if(node.left == null && node.right == null){
+                return 1
+            }
+            return(1+ nsize(node.left) + nsize(node.right))
+
+        }
+
+    }
+
+
+    this.height = function(){
+        let runner = this.head
+
+        return (1 + Math.max(nheight(runner.left) , nheight(runner.right)))
+
+
+        function nheight(node){
+            if(node == null){
+                return 0
+            }
+            if(node.left == null && node.right == null){
+                return 1
+            }
+            lh = nheight(node.left)
+            rh = nheight(node.right)
+            if(lh >= rh){
+                return (1 + lh)
+            }
+            return (1+rh)
+
+        }
+    }
+
+
 }
 
 
@@ -78,5 +123,6 @@ tree.add(75)
 tree.add(49)
 tree.add(60)
 tree.add(10)
-console.log(tree.min())
+tree.add(9)
+console.log(tree.height())
 
