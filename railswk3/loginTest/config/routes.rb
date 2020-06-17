@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'users/index'
+
+  get 'users/show/:id' => 'users#show'
+
   get 'sessions/new' => 'sessions#new', as: 'login'
 
   post 'sessions' => 'sessions#create' 

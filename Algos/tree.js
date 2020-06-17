@@ -35,10 +35,13 @@ function bsTree(){
         }
     }
 
-    this.contains = function(val){
+    this.contains = function(val,rn = false){
         let runner = this.head
         while (runner!=null){
             if(runner.val == val){
+                if(rn){
+                    return runner
+                }
                 return true
             }
             if (val < runner.val){
@@ -109,7 +112,95 @@ function bsTree(){
         }
     }
 
+    this.all = function(val){
+        let runner = this.head
+        console.log(runner.val)
 
+        return (1 + nsize(runner.left) + nsize(runner.right))
+
+
+        function nsize(node){
+            if(node == null){
+                return 0
+            }
+            if(node.left == null && node.right == null){
+                console.log(node.val)
+                return 1
+            }
+            console.log(node.val)
+            return(1+ nsize(node.left) + nsize(node.right))
+
+        }
+    }
+
+
+
+    this.remove = function(val){
+        
+        let runner = this.head
+        console.log(this.head.val,val)
+        if(this.head.val == val){
+
+            let lc = this.head.left
+            let rc = this.head.right
+            this.head = null
+            
+            storeAdd(this, lc)
+            
+            storeAdd(this, rc)
+            return this
+        }
+        while (runner!=null){
+            if(runner.left.val == val){
+
+                    let lc = runner.left.left
+                    let rc = runner.left.right
+                    runner.left = null
+                    
+                    storeAdd(this, lc)
+                    
+                    storeAdd(this, rc)
+                    return this
+                
+                
+            }
+            if(runner.right.val == val){
+                    let lc = runner.right.left
+                    let rc = runner.right.right
+                    runner.right = null
+                    storeAdd(this, lc)
+                    storeAdd(this, rc)
+                    return this
+            }
+            if (val < runner.val){
+            
+                runner = runner.left
+                continue
+            }
+            if (val > runner.val){
+            
+                runner = runner.right
+                continue
+            }
+            
+        }
+    }
+
+    function storeAdd(list, node){
+        if (node == null){
+            return
+        }
+        let lc = node.left
+        let rc = node.right
+        
+        list.add(node.val)
+        if(lc){
+            storeAdd(list,lc)
+        }
+        if(rc){
+            storeAdd(list,rc)
+        }
+    }
 }
 
 
@@ -124,5 +215,10 @@ tree.add(49)
 tree.add(60)
 tree.add(10)
 tree.add(9)
-console.log(tree.height())
+
+tree.all()
+tree.remove(9)
+console.log("*********************")
+tree.all()
+
 
