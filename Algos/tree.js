@@ -201,6 +201,37 @@ function bsTree(){
             storeAdd(list,rc)
         }
     }
+
+
+    this.isComplete = function(lastchild = false){
+        let row = [this.head]
+        let children = []
+        let runner 
+        while(row.length){
+            runner = row.shift()
+
+            if(runner.left){
+                children.push(runner.left)
+            }
+            if(runner.right){
+                children.push(runner.right)
+            }
+            if (lastchild && (runner.right || runner.left)){
+                return false
+            }
+            if (!runner.right || !runner.left){
+                lastchild = true
+            }
+            if (row.length == 0){
+                row = children
+                children = []
+            }
+        }
+        return true
+
+
+    }
+
 }
 
 
@@ -211,14 +242,28 @@ tree.add(50)
 
 tree.add(45)
 tree.add(75)
-tree.add(49)
+// tree.add(49)
 tree.add(60)
-tree.add(10)
-tree.add(9)
+tree.add(47)
+ tree.add(9)
 
-tree.all()
-tree.remove(9)
+
+
 console.log("*********************")
 tree.all()
+console.log(tree.isComplete())
 
 
+
+/*
+tree = new bsTree()
+n1 = new bsNode(56)
+tree.head = n1
+
+n2 = new bsNode(76)
+n3 = new bsNode(78)
+n1.left = n2
+n1.right = n3
+
+
+*/
